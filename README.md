@@ -96,11 +96,11 @@ Genre Comedy menduduki peringkat pertama dengan jumlah manga terbanyak, disusul 
 
 ## Data Preparation
 ### **Tahapan**
-**Data Cleaning**
+- **Data Cleaning**
 Langkah awal dalam preprocessing data adalah menghapus kolom-kolom yang tidak diperlukan atau kurang relevan untuk analisis, seperti kolom Themes, Demographics, Serialization, Members, dan Favorite. Selanjutnya, dilakukan pembersihan data kosong khususnya pada kolom Genres dengan menghapus baris yang memiliki nilai kosong atau hanya berisi tanda kurung kosong '[]', agar data yang digunakan benar-benar valid dan bermakna.
 Untuk mengatasi masalah data numerik yang mengandung outliers, metode Interquartile Range (IQR) digunakan. Pertama, nilai kuartil pertama (Q1) dan kuartil ketiga (Q3) dihitung untuk masing-masing fitur numerik, kemudian IQR dihitung sebagai selisih Q3 dan Q1. Data yang memiliki nilai di luar rentang normal 
 [Q1−1.5×IQR,Q3+1.5×IQR] dianggap outliers dan dikeluarkan dari dataset. Data yang sudah difilter tersebut kemudian digabungkan kembali dengan kolom-kolom kategorikal agar dataset yang digunakan sudah bersih dari outliers serta tetap mempertahankan informasi penting lainnya.
-**Data Transformation:**
+- **Data Transformation:**
 1. Encoding: Kolom Genres diubah menjadi format string agar dapat diolah lebih lanjut. Selanjutnya, data dalam kolom tersebut dipisahkan berdasarkan koma untuk membentuk daftar genre, lalu dikonversi ke dalam format one-hot encoding menggunakan metode get_dummies(). Hasil dari encoding ini berupa representasi biner dari masing-masing genre yang memudahkan algoritma machine learning dalam membaca fitur kategori tersebut.
 2. Feature engineering: Menghapus kolom non-fitur seperti Title dan Genres, sehingga hanya menyisakan variabel yang relevan untuk pelatihan model. Proses ini bertujuan untuk menjaga fokus model pada informasi yang benar-benar berpengaruh terhadap output.
 3. Handling missing value: Dilakukan pembersihan data dengan mengganti nilai seperti 'Unknown', '-', dan 'Not available' menjadi NaN. Kemudian, setiap kolom dicek apakah bertipe objek, dan jika iya, diubah ke format numerik menggunakan pd.to_numeric agar dapat diolah lebih lanjut. Setelah itu, pada proses feature selection, kolom-kolom numerik yang memiliki nilai hilang diisi menggunakan nilai median dari kolom tersebut. Jika median tidak tersedia (misalnya karena seluruh data kosong), nilai default yang digunakan adalah 0. Proses ini memastikan bahwa tidak ada nilai kosong yang tersisa dalam data.
@@ -123,7 +123,8 @@ Kekurangan
 - Tidak Memperhitungkan Preferensi Kolektif: Karena fokus pada konten dan bukan pola interaksi pengguna secara luas, sistem tidak memanfaatkan kekuatan data kolaboratif yang bisa menangkap tren atau pola popularitas.
 
 
-![alt text](image-9.png)
+![image](https://github.com/user-attachments/assets/26233b4d-7e4a-4f14-8b14-fb9d5c4b8103)
+
 
 
 2. **K-Nearest Neighbor (KNN)**
@@ -141,7 +142,7 @@ Kekurangan KNN:
 - Perlu pemilihan parameter yang tepat (jumlah tetangga k dan metrik jarak).
 - Tidak adaptif terhadap perubahan preferensi pengguna, karena hanya berdasarkan kemiripan antar item.
 
-![alt text](image-10.png)
+![image](https://github.com/user-attachments/assets/facb61fa-70aa-470d-bfba-596ca4079cc8)
 
 
 ## Evaluation
@@ -149,11 +150,12 @@ Dalam proyek sistem rekomendasi manga ini, evaluasi kinerja dilakukan menggunaka
 
 Precision@k (di sini k=5) dihitung dengan rumus:
 
-![alt text](image-11.png)
+![image](https://github.com/user-attachments/assets/a7903c51-44d5-4667-ac01-8fbef05aa047)
 
 Recall@k (k=5) dihitung dengan rumus:
 
-![alt text](image-12.png)
+![image](https://github.com/user-attachments/assets/c0d2261d-7750-40af-b5fb-6432a520b7be)
+
 
 Hasil evaluasi pada proyek ini menunjukkan nilai rata-rata Precision@5 sebesar 0.47 dan Recall@5 sebesar 1.00 untuk kedua metode Content-Based Filtering (CBF) dan K-Nearest Neighbors (KNN).
 
