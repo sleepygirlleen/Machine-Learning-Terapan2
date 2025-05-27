@@ -97,7 +97,7 @@ Genre Comedy menduduki peringkat pertama dengan jumlah manga terbanyak, disusul 
 ## Data Preparation
 ### **Tahapan**
 - **Data Cleaning**
-Langkah awal dalam preprocessing data adalah menghapus kolom-kolom yang tidak diperlukan atau kurang relevan untuk analisis, seperti kolom Themes, Demographics, Serialization, Members, dan Favorite. Selanjutnya, dilakukan pembersihan data kosong khususnya pada kolom Genres dengan menghapus baris yang memiliki nilai kosong atau hanya berisi tanda kurung kosong '[]', agar data yang digunakan benar-benar valid dan bermakna.
+Langkah awal dalam preprocessing data adalah menghapus kolom-kolom yang tidak diperlukan atau kurang relevan untuk analisis, seperti kolom Themes, Demographics, Serialization, Members, Authors, dan Favorite. Selanjutnya, dilakukan pembersihan data kosong khususnya pada kolom Genres dengan menghapus baris yang memiliki nilai kosong atau hanya berisi tanda kurung kosong '[]', agar data yang digunakan benar-benar valid dan bermakna.
 Untuk mengatasi masalah data numerik yang mengandung outliers, metode Interquartile Range (IQR) digunakan. Pertama, nilai kuartil pertama (Q1) dan kuartil ketiga (Q3) dihitung untuk masing-masing fitur numerik, kemudian IQR dihitung sebagai selisih Q3 dan Q1. Data yang memiliki nilai di luar rentang normal 
 [Q1−1.5×IQR,Q3+1.5×IQR] dianggap outliers dan dikeluarkan dari dataset. Data yang sudah difilter tersebut kemudian digabungkan kembali dengan kolom-kolom kategorikal agar dataset yang digunakan sudah bersih dari outliers serta tetap mempertahankan informasi penting lainnya.
 - **Data Transformation:**
